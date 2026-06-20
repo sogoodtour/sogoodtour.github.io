@@ -1,0 +1,302 @@
+/* =============================================================
+   SO GOOD TOUR — 본 사이트 스타일시트
+   스리랑카 전문관과 통일된 컬러·타이포 시스템 (프리미엄 톤)
+   ============================================================= */
+
+:root {
+  /* 공통 베이스 (스리랑카 사이트와 동일) */
+  --ivory:        #F7F4ED;
+  --sand:         #EDE6D6;
+  --ink:          #1E2A24;
+  --ink-soft:     #4A564E;
+
+  /* 시그니처 컬러 — 본 사이트는 오션 블루를 조금 더 전면에 */
+  --tea-green:    #2E4A3A;   /* 숲의 깊은 녹색 (메인) */
+  --tea-mid:      #3F6650;
+  --ocean:        #2C6E78;   /* 오션 블루 */
+  --sandy:        #C9A876;   /* 모래빛 */
+  --gold:         #C9A24B;   /* 골드 포인트 */
+  --gold-soft:    #D8BC7C;
+
+  --bg:           var(--ivory);
+  --text:         var(--ink);
+  --primary:      var(--tea-green);
+
+  --font-display: 'Cormorant Garamond', 'Noto Sans KR', serif;
+  --font-body:    'Noto Sans KR', system-ui, sans-serif;
+
+  --maxw: 1240px;
+  --radius: 4px;
+  --topbar-h: 38px;
+  --header-h: 78px;
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body); color: var(--text); background: var(--bg);
+  line-height: 1.7; font-size: 17px; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+.container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+
+/* ---------- 공통 타이포 ---------- */
+.eyebrow { font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ocean); font-weight: 700; margin-bottom: 18px; }
+.eyebrow.light { color: var(--gold-soft); }
+.section-title { font-family: var(--font-display); font-weight: 500; font-size: clamp(2rem, 4vw, 3.1rem); line-height: 1.18; color: var(--tea-green); letter-spacing: -0.01em; }
+.section-desc { margin-top: 16px; color: var(--ink-soft); font-size: 1.05rem; }
+.section-head { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+.lead-text { font-size: 1.12rem; color: var(--ink); margin-bottom: 20px; }
+
+/* ---------- 버튼 ---------- */
+.btn { display: inline-block; padding: 15px 32px; font-size: 1rem; font-weight: 500; letter-spacing: 0.02em; border-radius: var(--radius); transition: all 0.3s var(--ease); text-align: center; }
+.btn-primary { background: var(--tea-green); color: var(--ivory); }
+.btn-primary:hover { background: var(--tea-mid); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(46,74,58,0.28); }
+.btn-light { background: var(--ivory); color: var(--tea-green); }
+.btn-light:hover { background: #fff; transform: translateY(-2px); }
+.btn-gold { background: var(--gold); color: var(--ink); font-weight: 700; }
+.btn-gold:hover { background: var(--gold-soft); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(201,162,75,0.4); }
+.btn-block { width: 100%; }
+
+/* =============================================================
+   헤더
+   ============================================================= */
+.site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; transition: box-shadow 0.4s var(--ease); }
+.topbar { background: var(--tea-green); height: var(--topbar-h); display: flex; align-items: center; transition: height 0.3s, opacity 0.3s; }
+.topbar-inner { max-width: var(--maxw); margin: 0 auto; width: 100%; padding: 0 28px; display: flex; justify-content: space-between; align-items: center; }
+.topbar-msg { color: var(--gold-soft); font-size: 0.8rem; letter-spacing: 0.04em; }
+.topbar-util { display: flex; gap: 20px; }
+.topbar-util a { color: rgba(255,255,255,0.75); font-size: 0.82rem; transition: color 0.3s; }
+.topbar-util a:hover { color: #fff; }
+
+.header-main { background: rgba(247,244,237,0.0); transition: background 0.4s var(--ease), backdrop-filter 0.4s; height: var(--header-h); display: flex; align-items: center; }
+.site-header.scrolled .header-main { background: rgba(247,244,237,0.97); backdrop-filter: blur(8px); }
+.site-header.scrolled { box-shadow: 0 1px 0 rgba(46,74,58,0.08); }
+.header-inner { max-width: var(--maxw); margin: 0 auto; width: 100%; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; }
+
+.brand { display: flex; flex-direction: column; line-height: 1.05; color: #fff; transition: color 0.4s; }
+.scrolled .brand { color: var(--tea-green); }
+.brand-mark { font-family: var(--font-display); font-size: 1.65rem; font-weight: 600; letter-spacing: 0.06em; }
+.brand-sub { font-size: 0.68rem; letter-spacing: 0.2em; opacity: 0.85; }
+
+.gnb { display: flex; gap: 30px; }
+.gnb a { font-size: 1rem; font-weight: 500; color: #fff; position: relative; padding: 6px 0; transition: color 0.3s; white-space: nowrap; }
+.scrolled .gnb a { color: var(--ink); }
+.gnb a::after { content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 1.5px; background: var(--gold); transition: width 0.3s var(--ease); }
+.gnb a:hover { color: var(--gold); }
+.scrolled .gnb a:hover { color: var(--ocean); }
+.gnb a:hover::after { width: 100%; }
+/* 스리랑카 전문관 메뉴 강조 */
+.gnb a[href="#srilanka"] { color: var(--gold-soft); font-weight: 700; }
+.scrolled .gnb a[href="#srilanka"] { color: var(--ocean); }
+
+.header-util { display: flex; align-items: center; gap: 18px; }
+.util-call { display: flex; flex-direction: column; align-items: flex-end; line-height: 1.15; color: #fff; transition: color 0.4s; }
+.scrolled .util-call { color: var(--tea-green); }
+.util-call-label { font-size: 0.68rem; letter-spacing: 0.1em; opacity: 0.8; }
+.util-call-num { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; }
+
+.menu-toggle { display: none; flex-direction: column; gap: 5px; padding: 8px; }
+.menu-toggle span { width: 24px; height: 2px; background: #fff; transition: all 0.3s; }
+.scrolled .menu-toggle span { background: var(--tea-green); }
+
+/* =============================================================
+   히어로 + 검색바
+   ============================================================= */
+.hero { position: relative; min-height: 640px; height: 88vh; display: flex; align-items: center; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; animation: heroZoom 18s ease-out forwards; }
+@keyframes heroZoom { from { transform: scale(1.08); } to { transform: scale(1); } }
+.hero-veil { position: absolute; inset: 0; background: linear-gradient(100deg, rgba(30,42,36,0.7) 0%, rgba(30,42,36,0.3) 55%, rgba(44,110,120,0.25) 100%); }
+.hero-content { position: relative; z-index: 2; color: #fff; max-width: var(--maxw); margin: 0 auto; padding: 0 28px; width: 100%; }
+.hero-eyebrow { font-size: 0.85rem; letter-spacing: 0.28em; color: var(--gold-soft); font-weight: 700; margin-bottom: 22px; }
+.hero-title { font-family: var(--font-display); font-weight: 500; font-size: clamp(2.6rem, 6.5vw, 5rem); line-height: 1.08; margin-bottom: 24px; text-shadow: 0 2px 30px rgba(0,0,0,0.3); }
+.hero-title em { font-style: italic; color: var(--gold-soft); }
+.hero-lead { font-size: clamp(1.05rem, 1.8vw, 1.28rem); max-width: 560px; opacity: 0.95; }
+
+/* 통합 검색바 — 히어로 하단에 걸침 */
+.search-bar { position: absolute; left: 0; right: 0; bottom: -44px; z-index: 5; padding: 0 28px; }
+.search-inner { max-width: var(--maxw); margin: 0 auto; background: #fff; border-radius: var(--radius); box-shadow: 0 18px 50px rgba(30,42,36,0.18); display: flex; align-items: flex-end; gap: 0; padding: 22px 24px; }
+.search-field { display: flex; flex-direction: column; padding: 0 20px; border-right: 1px solid rgba(46,74,58,0.12); }
+.search-field.grow { flex: 1; }
+.search-field:first-child { padding-left: 8px; }
+.search-field label { font-size: 0.74rem; color: var(--ocean); font-weight: 700; letter-spacing: 0.06em; margin-bottom: 8px; }
+.search-field select, .search-field input { border: none; font-family: inherit; font-size: 1.02rem; color: var(--ink); background: transparent; outline: none; padding: 4px 0; min-width: 130px; }
+.search-field.grow input { width: 100%; }
+.search-btn { background: var(--tea-green); color: #fff; font-size: 1.05rem; font-weight: 500; padding: 16px 38px; border-radius: var(--radius); margin-left: 20px; transition: all 0.3s var(--ease); white-space: nowrap; }
+.search-btn:hover { background: var(--tea-mid); transform: translateY(-2px); }
+
+/* =============================================================
+   서비스 바로가기
+   ============================================================= */
+.services { padding: 96px 0 90px; }
+.service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.service-card { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 38px 24px; background: var(--sand); border-radius: var(--radius); transition: all 0.35s var(--ease); }
+.service-card:hover { transform: translateY(-6px); box-shadow: 0 16px 38px rgba(30,42,36,0.12); background: #fff; }
+.service-icon { font-size: 2.4rem; margin-bottom: 16px; }
+.service-name { font-size: 1.2rem; font-weight: 700; color: var(--tea-green); margin-bottom: 6px; }
+.service-desc { font-size: 0.92rem; color: var(--ink-soft); }
+
+/* =============================================================
+   이달의 프리미엄 여행
+   ============================================================= */
+.packages { padding: 110px 0; background: var(--sand); }
+.package-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; }
+.package-card { background: var(--ivory); border-radius: var(--radius); overflow: hidden; box-shadow: 0 4px 20px rgba(30,42,36,0.06); transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease); }
+.package-card:hover { transform: translateY(-8px); box-shadow: 0 20px 44px rgba(30,42,36,0.16); }
+.package-thumb { position: relative; aspect-ratio: 4/3; overflow: hidden; }
+.package-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
+.package-card:hover .package-thumb img { transform: scale(1.07); }
+.package-tag { position: absolute; top: 14px; left: 14px; background: rgba(30,42,36,0.82); color: var(--gold-soft); font-size: 0.66rem; letter-spacing: 0.14em; font-weight: 700; padding: 6px 12px; border-radius: 100px; }
+.package-body { padding: 22px 22px 26px; }
+.package-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--tea-green); margin-bottom: 5px; }
+.package-sub { font-size: 0.86rem; color: var(--ink-soft); margin-bottom: 16px; }
+.package-meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.88rem; color: var(--ink-soft); padding-bottom: 14px; border-bottom: 1px solid rgba(46,74,58,0.1); margin-bottom: 14px; }
+.package-rating { color: var(--gold); font-weight: 700; }
+.package-price { font-size: 0.95rem; color: var(--ink-soft); }
+.package-price strong { color: var(--tea-green); font-weight: 700; }
+
+/* =============================================================
+   지역별 인기 여행 (탭)
+   ============================================================= */
+.regions { padding: 110px 0; }
+.region-tabs { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 46px; }
+.region-tab { padding: 12px 28px; border-radius: 100px; font-size: 0.98rem; font-weight: 500; color: var(--ink-soft); background: var(--sand); transition: all 0.3s var(--ease); }
+.region-tab:hover { color: var(--tea-green); }
+.region-tab.is-active { background: var(--tea-green); color: var(--ivory); }
+.region-panel { display: none; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: center; }
+.region-panel.is-active { display: grid; animation: fadeIn 0.5s var(--ease); }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.region-img { border-radius: var(--radius); overflow: hidden; aspect-ratio: 16/11; }
+.region-img img { width: 100%; height: 100%; object-fit: cover; }
+.region-info h3 { font-family: var(--font-display); font-size: 2rem; font-weight: 600; color: var(--tea-green); margin-bottom: 16px; }
+.region-info p { color: var(--ink-soft); margin-bottom: 22px; }
+.region-list { list-style: none; }
+.region-list li { padding: 12px 0 12px 26px; position: relative; border-bottom: 1px solid rgba(46,74,58,0.1); }
+.region-list li::before { content: ''; position: absolute; left: 0; top: 19px; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); }
+
+/* =============================================================
+   여름 와이드 배너
+   ============================================================= */
+.feature-banner { position: relative; padding: 130px 0; overflow: hidden; }
+.feature-bg { position: absolute; inset: 0; }
+.feature-bg img { width: 100%; height: 100%; object-fit: cover; }
+.feature-veil { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(30,42,36,0.76), rgba(44,110,120,0.4)); }
+.feature-content { position: relative; z-index: 2; color: #fff; max-width: 600px; }
+.feature-title { font-family: var(--font-display); font-weight: 500; font-size: clamp(2rem, 4.5vw, 3.3rem); line-height: 1.15; margin-bottom: 22px; }
+.feature-desc { font-size: 1.1rem; opacity: 0.94; margin-bottom: 32px; }
+
+/* =============================================================
+   스리랑카 전문관 배너
+   ============================================================= */
+.srilanka-banner { position: relative; padding: 140px 0; overflow: hidden; }
+.srilanka-bg { position: absolute; inset: 0; }
+.srilanka-bg img { width: 100%; height: 100%; object-fit: cover; }
+.srilanka-veil { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(30,42,36,0.85) 0%, rgba(30,42,36,0.55) 60%, rgba(44,110,120,0.3) 100%); }
+.srilanka-content { position: relative; z-index: 2; }
+.srilanka-text { max-width: 560px; color: #fff; }
+.srilanka-title { font-family: var(--font-display); font-weight: 600; font-size: clamp(2.2rem, 4.5vw, 3.4rem); line-height: 1.12; margin-bottom: 20px; color: var(--gold-soft); }
+.srilanka-desc { font-size: 1.1rem; opacity: 0.95; margin-bottom: 34px; }
+
+/* =============================================================
+   서비스 안내
+   ============================================================= */
+.info { padding: 110px 0; }
+.info-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 70px; }
+.info-block { position: sticky; top: 130px; align-self: start; }
+.info-items { display: grid; grid-template-columns: 1fr 1fr; gap: 36px 44px; }
+.info-item h4 { font-size: 1.18rem; color: var(--tea-green); margin-bottom: 12px; font-weight: 700; position: relative; padding-left: 18px; }
+.info-item h4::before { content: ''; position: absolute; left: 0; top: 6px; bottom: 4px; width: 3px; background: var(--ocean); border-radius: 2px; }
+.info-item p { color: var(--ink-soft); font-size: 0.98rem; }
+
+/* =============================================================
+   맞춤 문의
+   ============================================================= */
+.contact { position: relative; padding: 130px 0; overflow: hidden; }
+.contact-bg { position: absolute; inset: 0; }
+.contact-bg img { width: 100%; height: 100%; object-fit: cover; }
+.contact-veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(30,42,36,0.86), rgba(30,42,36,0.93)); }
+.contact-content { position: relative; z-index: 2; color: #fff; max-width: 680px; margin: 0 auto; text-align: center; }
+.contact-title { font-family: var(--font-display); font-weight: 500; font-size: clamp(2rem, 4.5vw, 3.2rem); line-height: 1.15; margin-bottom: 18px; }
+.contact-desc { font-size: 1.1rem; opacity: 0.92; margin-bottom: 40px; }
+.contact-form { text-align: left; }
+.form-row { display: flex; gap: 16px; margin-bottom: 16px; }
+.contact-form input, .contact-form select, .contact-form textarea { width: 100%; padding: 15px 18px; font-family: inherit; font-size: 1rem; background: rgba(255,255,255,0.95); border: none; border-radius: var(--radius); color: var(--ink); }
+.contact-form textarea { min-height: 110px; resize: vertical; margin-bottom: 22px; }
+.contact-or { margin-top: 24px; font-size: 0.98rem; opacity: 0.9; text-align: center; }
+.contact-or strong { color: var(--gold-soft); font-size: 1.1rem; }
+
+/* =============================================================
+   푸터
+   ============================================================= */
+.site-footer { background: #18211C; color: rgba(255,255,255,0.7); }
+.footer-inner { display: grid; grid-template-columns: 1.4fr 2fr; gap: 60px; padding: 72px 0 48px; }
+.footer-logo { font-family: var(--font-display); font-size: 1.7rem; font-weight: 600; color: #fff; letter-spacing: 0.05em; }
+.footer-tag { margin: 14px 0 22px; font-size: 0.95rem; }
+.footer-home-link { color: var(--gold-soft); font-weight: 500; font-size: 0.95rem; transition: color 0.3s; }
+.footer-home-link:hover { color: var(--gold); }
+.footer-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.footer-col h5 { color: #fff; font-size: 0.95rem; margin-bottom: 18px; letter-spacing: 0.05em; }
+.footer-col a, .footer-hours { display: block; font-size: 0.92rem; color: rgba(255,255,255,0.65); padding: 6px 0; transition: color 0.3s; }
+.footer-col a:hover { color: var(--gold-soft); }
+.footer-legal { border-top: 1px solid rgba(255,255,255,0.1); padding: 30px 0; font-size: 0.83rem; color: rgba(255,255,255,0.5); line-height: 1.9; }
+.footer-links a { color: rgba(255,255,255,0.6); transition: color 0.3s; }
+.footer-links a:hover { color: var(--gold-soft); }
+.footer-copy { margin-top: 14px; }
+
+/* =============================================================
+   스크롤 리빌
+   ============================================================= */
+.reveal { opacity: 0; transform: translateY(34px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+/* =============================================================
+   반응형
+   ============================================================= */
+@media (max-width: 1080px) {
+  .gnb { gap: 20px; }
+  .gnb a { font-size: 0.94rem; }
+}
+@media (max-width: 980px) {
+  .info-grid { grid-template-columns: 1fr; gap: 44px; }
+  .info-block { position: static; }
+  .package-grid { grid-template-columns: repeat(2, 1fr); }
+  .service-grid { grid-template-columns: repeat(2, 1fr); }
+  .region-panel.is-active { grid-template-columns: 1fr; gap: 28px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 40px; }
+  /* 검색바: 모바일에서 세로 정렬 */
+  .search-inner { flex-direction: column; align-items: stretch; gap: 14px; }
+  .search-field { border-right: none; border-bottom: 1px solid rgba(46,74,58,0.12); padding: 0 0 14px; }
+  .search-btn { margin-left: 0; width: 100%; }
+  .search-bar { bottom: -120px; }
+  .services { padding-top: 150px; }
+}
+@media (max-width: 720px) {
+  body { font-size: 16px; }
+  .topbar-msg { display: none; }
+  .topbar-util { margin: 0 auto; gap: 16px; }
+  .gnb {
+    position: fixed; top: calc(var(--topbar-h) + var(--header-h)); right: 0; width: 76%; max-width: 320px;
+    height: calc(100vh - var(--topbar-h) - var(--header-h)); background: var(--ivory);
+    flex-direction: column; gap: 0; padding: 24px 28px;
+    transform: translateX(100%); transition: transform 0.4s var(--ease); box-shadow: -10px 0 40px rgba(0,0,0,0.15);
+  }
+  .gnb.open { transform: translateX(0); }
+  .gnb a { color: var(--ink); padding: 16px 0; border-bottom: 1px solid rgba(46,74,58,0.1); font-size: 1.05rem; }
+  .scrolled .gnb a { color: var(--ink); }
+  .menu-toggle { display: flex; }
+  .util-call-num { font-size: 1.15rem; }
+  .package-grid, .service-grid { grid-template-columns: 1fr; }
+  .info-items { grid-template-columns: 1fr; gap: 28px; }
+  .form-row { flex-direction: column; gap: 16px; }
+  .packages, .regions, .info, .feature-banner, .srilanka-banner, .contact { padding: 80px 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; }
+}
